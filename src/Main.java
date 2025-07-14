@@ -10,9 +10,9 @@ public class Main {
         ArrayList<User> users = new ArrayList<>();
         ArrayList<Passenger> passengers = new ArrayList<>();
         boolean login = false;
-        users.add(new User("admin", "admin", "00000000", true));
-        users.add(new User("hussam", "hussam", "00000000", true));
-        users.add(new User("ahmed", "ahmed", "00000000", false));
+        users.add(new User("admin", "admin", "000000000", true));
+        users.add(new User("hussam", "hussam", "111111111", true));
+        users.add(new User("ahmed", "ahmed", "222222222", false));
         passengers.add(new Subscribers(users.get(1).getUsername(), users.get(1).getId()));
         passengers.add(new NonSubscribers(users.get(2).getUsername(), users.get(2).getId(), users.get(2).isSubs()));
         String username, password, id;
