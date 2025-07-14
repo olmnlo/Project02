@@ -18,7 +18,7 @@ public class Main {
         String username, password, id;
         username = password = id = null;
         boolean subs;
-        program:
+
         while (true) {
             login:
             if (!login) {
