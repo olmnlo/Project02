@@ -9,6 +9,30 @@ public class Main {
         Scanner scn = new Scanner(System.in);
         ArrayList<User> users = new ArrayList<>();
         ArrayList<Passenger> passengers = new ArrayList<>();
+
+
+        Route route1 = new Route("Jeddah", "Abha", 300);
+        Route route2 = new Route("Dammam", "Riyadh", 250);
+        Route route3 = new Route("Dammam", "Kuwait", 200);
+        Route route4 = new Route("Riyadh", "Dammam", 300);
+        ArrayList<Route> routes = new ArrayList<>();
+        routes.add(route1);
+        routes.add(route2);
+        routes.add(route3);
+        routes.add(route4);
+
+        Car car1 = new Car("0001", route1, 0);
+        Car car2 = new Car("0002", route2, 4);
+        Car car3 = new Car("0003", route3, 5);
+        Car car4 = new Car("0004", route4, 7);
+        ArrayList<Car> cars = new ArrayList<>();
+        cars.add(car1);
+        cars.add(car2);
+        cars.add(car3);
+        cars.add(car4);
+
+
+
         boolean login = false;
         users.add(new User("admin", "admin", "000000000", true));
         users.add(new User("hussam", "hussam", "111111111", true));
@@ -92,26 +116,6 @@ public class Main {
             }
 
             if (login) {
-                Route route1 = new Route("Jeddah", "Abha", 300);
-                Route route2 = new Route("Dammam", "Riyadh", 250);
-                Route route3 = new Route("Dammam", "Kuwait", 200);
-                Route route4 = new Route("Riyadh", "Dammam", 300);
-                ArrayList<Route> routes = new ArrayList<>();
-                routes.add(route1);
-                routes.add(route2);
-                routes.add(route3);
-                routes.add(route4);
-
-                Car car1 = new Car("0001", route1, 0);
-                Car car2 = new Car("0002", route2, 4);
-                Car car3 = new Car("0003", route3, 5);
-                Car car4 = new Car("0004", route4, 7);
-                ArrayList<Car> cars = new ArrayList<>();
-                cars.add(car1);
-                cars.add(car2);
-                cars.add(car3);
-                cars.add(car4);
-
                 Passenger user = null;
                 if (username.equals("admin") && login) {
                     ArrayList<Car> add_cars = new ArrayList<>();
