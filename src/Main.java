@@ -1,6 +1,7 @@
 import poolingSystem.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
@@ -10,6 +11,10 @@ public class Main {
         ArrayList<Passenger> passengers = new ArrayList<>();
         boolean login = false;
         users.add(new User("admin", "admin", "00000000", true));
+        users.add(new User("hussam", "hussam", "00000000", true));
+        users.add(new User("ahmed", "ahmed", "00000000", false));
+        passengers.add(new Subscribers(users.get(1).getUsername(), users.get(1).getId()));
+        passengers.add(new NonSubscribers(users.get(2).getUsername(), users.get(2).getId(), users.get(2).isSubs()));
         String username, password, id;
         username = password = id = null;
         boolean subs;
@@ -274,10 +279,14 @@ public class Main {
                         }
                     }
 
-                    passengers.add(user);
-                    for (Passenger p : passengers) {
-                        System.out.println(p);
+                    Iterator<Passenger> it = passengers.iterator();
+                    while (it.hasNext()) {
+                        Passenger p = it.next();
+                        if (p.getName().equals(user.getName())) {
+                            it.remove(); // ✅ safe removal
+                        }
                     }
+                    passengers.add(user);
                 }
             }
         }
