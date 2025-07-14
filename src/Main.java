@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         ArrayList<User> users = new ArrayList<>();
+        ArrayList<Passenger> passengers = new ArrayList<>();
         boolean login = false;
         users.add(new User("admin", "admin", "00000000", true));
         String username, password, id;
@@ -54,12 +55,12 @@ public class Main {
                                     """);
                             int s = scn.nextInt();
                             subs = s == 1;
-                            if (!users.contains(new User(username, password, id, subs))) {
+                            if (!users.contains(new User(username, password, id, subs)) && !username.equals("admin")) {
                                 users.add(new User(username, password, id, subs));
                                 login = true;
                                 break login;
                             } else {
-                                System.out.println("you have user");
+                                System.out.println("you cannot register please try again");
                             }
                             break;
                         case 3:
@@ -78,7 +79,11 @@ public class Main {
                         2- no
                         """);
                 int n = scn.nextInt();
-                login = n == 1;
+                if (n == 1) {
+                    login = false;
+                    continue; // skip rest of loop, go back to login menu
+                }
+
             }
 
             if (login) {
@@ -117,7 +122,8 @@ public class Main {
                                 5- show routes info
                                 6- show users info
                                 7- assign route to car
-                                8- log out from admin
+                                8- show list of passengers
+                                9- log out from admin
                                 """);
 
                         int admin_chose = scn.nextInt();
@@ -190,20 +196,20 @@ public class Main {
                                 System.out.println("done");
                                 break;
                             case 8:
+                                System.out.println("list of all passengers");
+                                for (Passenger p: passengers){
+                                    System.out.println(p);
+                                }
+                                break;
+                            case 9:
                                 login = false;
                                 break admin;
+                            default:
+                                System.out.println("you must chose from menu");
 
                         }
                     }
                 } else if (login){
-                    System.out.println("""
-                                Enter "1" to log-out
-                                Enter any number to continue
-                                """);
-                    int chos = scn.nextInt();
-                    if(chos == 1){
-                        login = false;
-                    }
                     passenger_progress:
                     while (true) {
                         int count= routes.size()+1;
@@ -268,7 +274,6 @@ public class Main {
                         }
                     }
 
-                    ArrayList<Passenger> passengers = new ArrayList<>();
                     passengers.add(user);
                     for (Passenger p : passengers) {
                         System.out.println(p);
